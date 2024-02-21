@@ -1,7 +1,6 @@
 import rateLimit from "express-rate-limit";
 import { Request, Response, Router } from "express";
 import { UserRouter } from "./user.routes";
-import { middlewareController } from "../controllers/middleware.controller";
 
 // Assign router to the express.Router() instance
 const router: Router = Router();
@@ -59,13 +58,6 @@ router.get("/test", APILimiter, (req: Request, res: Response) => {
 router.get("/", APILimiter, (req: Request, res: Response) => {
   res.status(200).json({ msg: "Hello World" });
 });
-router.get(
-  "/test-login",
-  middlewareController.userMethods.isValidToken,
-  (req: Request, res: Response) => {
-    res.status(200).json({ msg: "Hello Logged In User" });
-  }
-);
 router.get(
   "/test-feirce",
   APILimiterFeirce,

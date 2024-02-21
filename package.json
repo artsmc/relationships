@@ -53,7 +53,7 @@
     "start": "node ./dist/server/server.js --PORT 8080",
     "start:dev": "npm-run-all --parallel  watch",
     "watch": "nodemon  -e ts,js,css,scss,hbs -w ./app -x npm run hotload",
-    "hotload": "npm run build:dev && node ./dist/server/server.js --PORT 8080"
+    "hotload": "npm run build:dev && node ./dist/server/server.js --PORT 8090"
   },
   "devDependencies": {
     "@babel/core": "^7.23.6",

@@ -11,7 +11,7 @@ import express from "express";
 
 const cCPUs = os.cpus().length;
 const app = express();
-const port: string | number = process.env.PORT || 8080;
+const port: string | number = process.env.PORT || 8090;
 app.use(express.urlencoded({ extended: false }));
 if (cluster.isMaster) {
   console.log(`Number of CPUs is ${cCPUs}`);
