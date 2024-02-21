@@ -1,4 +1,3 @@
-import express, { Express, Request, Response } from "express";
 import cluster from "cluster";
 import os from "os";
 import * as path from "path";
@@ -8,14 +7,15 @@ import bodyParser from "body-parser";
 import helmet from "helmet";
 import { ExpressRouter } from "./routers/_router";
 import { helpers } from "./../client/views/engine/helper";
+import express from "express";
 
 const cCPUs = os.cpus().length;
-const app: Express = express();
+const app = express();
 const port: string | number = process.env.PORT || 8080;
 app.use(express.urlencoded({ extended: false }));
-
 if (cluster.isMaster) {
   console.log(`Number of CPUs is ${cCPUs}`);
+  // @ts-ignore
   console.log(`Master ${process.pid} is running`);
   for (let i = 0; i < cCPUs; i++) {
     cluster.fork();
