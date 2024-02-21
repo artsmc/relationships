@@ -80,7 +80,7 @@ if (cluster.isMaster) {
   );
   app.get("/", async (req, res, next) => {
     try {
-      res.render("home", { title: "The Pursute" });
+      res.render("home", { title: "The Pursuit" });
     } catch (err) {
       // Call the next middleware with the error
       res.json(err);
