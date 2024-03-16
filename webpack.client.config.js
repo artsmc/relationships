@@ -12,7 +12,7 @@ module.exports = {
       "toastify-js/src/toastify.css",
       "./app/client/public/assets/css/styles.js",
     ], // Assuming styles.js imports all necessary CSS
-    vendor: ["jquery", "hammerjs", "micromodal", "toastify-js", "konva"],
+    vendor: ["jquery", "hammerjs", "micromodal", "toastify-js","pixi.js"],
     app: [
       "./app/client/public/assets/js/jquery.lazy.min.js",
       "./app/client/public/assets/js/jquery.hammer.js",

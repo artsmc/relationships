@@ -8,6 +8,7 @@ import helmet from "helmet";
 import { ExpressRouter } from "./routers/_router";
 import { helpers } from "./../client/views/engine/helper";
 import express from "express";
+import { userController } from "./controllers/user.controller";
 
 const cCPUs = os.cpus().length;
 const app = express();
@@ -70,17 +71,20 @@ if (cluster.isMaster) {
     helmet({
       contentSecurityPolicy: {
         directives: {
-          "default-src": ["*"],
-          "script-src": ["*", "'unsafe-inline'", "'unsafe-eval'", "data:"],
-          "style-src": ["*", "'unsafe-inline'"],
-          "img-src": ["*", "data:"],
+          "default-src": ["*", "'self'"],
+          "connect-src": ["https:", "http:", "ws:", "wss:", "data:", "blob:"],
+          "script-src": ["*","'self'", "'unsafe-inline'", "'unsafe-eval'", "data:", "blob:"],
+          "style-src": ["*", "'unsafe-inline'", "'self'", "https://*.fontawesome.com/*"],
+          "img-src": ["*","'self'", "'unsafe-inline'", "'unsafe-eval'", "data:"],
         },
       },
     })
   );
   app.get("/", async (req, res, next) => {
     try {
-      res.render("home", { title: "The Pursuit" });
+      userController.getAllUsersInTheLast2Hours().then((users) => {
+        res.render("home", { title: "The Pursuit", users });
+      });
     } catch (err) {
       // Call the next middleware with the error
       res.json(err);

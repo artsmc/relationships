@@ -4,9 +4,13 @@ requirejs(
         "app",
         "vendor",
         "jquery",
-        "owl.carousel.min",
+        "global"
     ],
     function (util) {
-        requirejs(["home"]);
+        requirejs(["pixi.app"], function (konvaStage) {
+            requirejs(["home"], function (splineApp) {
+                
+            })
+        });
     }
 );
