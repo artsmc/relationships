@@ -46,7 +46,7 @@ router.post("/update-all-offset", async (req: Request, res: Response) => {
     // Use Promise.all() to wait for all operations to be done before sending response
     // This will also add every user to 'completed' array once their offset is modified
     await Promise.all(users.map(async (user) => {
-      await userController.modifyUserOffset({user: user.user, offset: 0});
+      await userController.modifyUserOffset({user: user.user, offset: 100});
       completed.push(user);
     }));
     res.status(200).json(completed);

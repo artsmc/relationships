@@ -15,7 +15,7 @@ class PixiApp {
     return app;
   }
   movingStageWithShape(shape, stage) {
-    stage.x = (shape.x - window.innerWidth / 2) * -1;
+    stage.x = (shape.x+40 - window.innerWidth / 2) * -1;
   }
   findShapeById(id) {
     let shape = this.shapes.find(shape => shape.name === id);

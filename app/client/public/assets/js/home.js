@@ -1,33 +1,51 @@
 $(document).ready(function () {
   App.initHome();
-
+  $('.owl-carousel').owlCarousel({
+    items:1,
+    margin:10,
+    dots: false,
+    nav: false
+});
   $('.expand-fullscreen').on('click', App.expandFullscreen);
   $('.compress-fullscreen').on('click', App.contractFullscreen);
-  $('.raise-hand').on('click', raisedHand)
+  $('.raise-hand').on('click', raisedHand);
+  $('.raise-god').on('click', raiseGod);
+  $('.slide .header h1').fitText();
+  
   addEventListener("fullscreenchange", (event) => App.watchFullscreen(event));
   // Define the keyup event handler
   function onKeyUp(event) {
-    if (event.code === 'Space') {
-      console.log('Spacebar released');
-      // Your code for handling Spacebar release
-      raisedHand()
-    } else if (event.code === 'KeyG') {
-      console.log('G released');
-      raiseGod(0)
-    }
+      if (event.code === 'ArrowLeft' || event.code === '37') {
+        $('.owl-carousel').trigger('prev.owl.carousel', [300]);
+      }
+
+      else if (event.code === 'ArrowRight' || event.code === '39') {
+        // Your code for handling Right Arrow Key Up
+        $('.owl-carousel').trigger('next.owl.carousel');
+      }
+      else if (event.code === 'Space') {
+        console.log('Spacebar released');
+        // Your code for handling Spacebar release
+        raisedHand()
+      } 
+      else if (event.code === 'KeyG') {
+        console.log('G released');
+        raiseGod(0)
+      }
   }
   function raisedHand() {
     const man = myPixiApp.findShapeById(App.man.user);
-    App.updateOffset({ user: App.man.user, offset: man.offset + App.man.offsetNumber });
-    App.findUsers().then(users => {
+    App.updateOffset({ user: App.man.user, offset: man.offset + App.man.offsetNumber }).then(sucess=>{
+      App.findUsers().then(users => {
       App.printUsers(users);
       App.users = users;
     });
     man.shiftShape(man.offset + App.man.offsetNumber);
+    });
   }
   function raiseGod() {
     const allShapes = myPixiApp.shapes.forEach(shape => {
-      shape.shiftShape(0);
+      shape.shiftShape(100);
     });
     const man = myPixiApp.findShapeById(App.man.user);
     App.updateAllOffset().then(all => {
@@ -101,7 +119,7 @@ const App = {
       // Check if the response status is 200
       if (response) {
         $('.loading-overlay').removeClass('is-active');
-        App.handleSuccess(response);
+        // App.handleSuccess(response);
         return response;
       }
     } catch (error) {
