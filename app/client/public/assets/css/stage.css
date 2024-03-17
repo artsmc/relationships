@@ -73,7 +73,9 @@ width: 100%;
   font-size: 220%;
   text-align: center;
 }
-
+.slide h1.larger{
+  font-size: 300%!important;
+}
 .slide .bible h1 {
   margin-bottom: 0px;
   text-align: center;
@@ -88,7 +90,18 @@ width: 100%;
 .slide .bible p sup{
   font-weight: bold;
 }
-
+.slide .qr img{
+  border: 0;
+    display: inline-block;
+    width: auto;
+    height: 300px;
+    margin: auto;
+}
+.slide img.logo {
+  width: 215px !important;
+  height: auto;
+  display: inline-block !important;
+}
 img.qr-code {
   border: 0;
   display: inline-block;
