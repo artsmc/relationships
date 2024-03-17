@@ -44,7 +44,7 @@
   position: relative;
 }
 .slide .cover{
-  font-size: 240%;
+  font-size: 450%;
   text-align: center;
 }
 .slide .cover h1{
@@ -55,7 +55,7 @@
 }
 
 .slide .header {
-  font-size: 290%;
+  font-size: 360%;
   text-align: center;
 }
 
@@ -70,7 +70,7 @@ width: 100%;
 }
 
 .slide .bible {
-  font-size: 220%;
+  font-size: 360%;
   text-align: center;
 }
 .slide h1.larger{
@@ -82,7 +82,7 @@ width: 100%;
 }
 
 .slide .bible p {
-  font-size: 80%;
+  font-size: 188%;
   margin-top: 50px;
   padding: 50px;
   background-color: #ffffff70;
@@ -92,10 +92,14 @@ width: 100%;
 }
 .slide .qr img{
   border: 0;
+  margin-top: 20px;
     display: inline-block;
     width: auto;
-    height: 300px;
+    height: 600px;
     margin: auto;
+}
+.slide .qr p{
+  font-size: 300%;
 }
 .slide img.logo {
   width: 215px !important;
