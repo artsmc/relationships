@@ -89,6 +89,15 @@ if (cluster.isMaster) {
       // Call the next middleware with the error
       res.json(err);
     }
+  });app.get("/control", async (req, res, next) => {
+    try {
+      userController.getAllUsersInTheLast2Hours().then((users) => {
+        res.render("control", { title: "The Pursuit", users });
+      });
+    } catch (err) {
+      // Call the next middleware with the error
+      res.json(err);
+    }
   });
 
   const serveStaticGzippedFile = (
